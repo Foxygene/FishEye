@@ -1,31 +1,38 @@
 function photographerFactory(data) {
-  const { name, city, country, tagline, price, portrait } = data;
+  const { name, id, city, country, tagline, price, portrait } = data;
 
   const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement('article');
 
-    const img = document.createElement('img');
-    img.setAttribute('src', picture);
+    const seachParams = new URLSearchParams({ id });
 
-    const h2 = document.createElement('h2');
-    h2.textContent = name;
+    const articleLink = document.createElement('a');
+    articleLink.classList.add('article-content');
+    articleLink.setAttribute('href', `/photographer.html?${seachParams}`);
 
-    const location = document.createElement('p');
-    location.textContent = `${city}, ${country}`;
+    const profilePictureElement = document.createElement('img');
+    profilePictureElement.setAttribute('src', picture);
 
-    const quote = document.createElement('p');
-    quote.textContent = tagline;
+    const nameElement = document.createElement('h2');
+    nameElement.textContent = name;
 
-    const pricing = document.createElement('p');
-    pricing.textContent = `${price}€/jour`;
+    const locationElement = document.createElement('p');
+    locationElement.textContent = `${city}, ${country}`;
 
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(location);
-    article.appendChild(quote);
-    article.appendChild(pricing);
+    const taglineElement = document.createElement('p');
+    taglineElement.textContent = tagline;
+
+    const priceElement = document.createElement('p');
+    priceElement.textContent = `${price}€/jour`;
+
+    article.appendChild(articleLink);
+    articleLink.appendChild(profilePictureElement);
+    articleLink.appendChild(nameElement);
+    articleLink.appendChild(locationElement);
+    articleLink.appendChild(taglineElement);
+    articleLink.appendChild(priceElement);
 
     return article;
   }
