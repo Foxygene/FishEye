@@ -4,8 +4,18 @@
 
 .photograph-header {
   background-color: #fafafa;
-  height: 300px;
   margin: 0 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.photograph-header img {
+  height: 225px;
+  width: 225px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .contact_button {
@@ -48,6 +58,30 @@
   text-align: center;
 }
 
+.user_infos {
+  width: 33%;
+}
+
+.profile_name {
+  font-size: 64px;
+  line-height: 83px;
+
+  color: #d3573c;
+}
+.profile_location {
+  font-size: 24px;
+  line-height: 31px;
+
+  color: #901c1c;
+}
+
+.profile_quote {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+
+  color: #525252;
+}
 form {
   display: flex;
   width: 100%;
