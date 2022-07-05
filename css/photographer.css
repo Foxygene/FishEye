@@ -82,6 +82,38 @@
 
   color: #525252;
 }
+
+.media_section {
+  margin: 50px 100px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.media_box {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.media_box img {
+  object-fit: cover;
+  object-position: 50% 35%;
+  width: 350px;
+  height: 300px;
+}
+
+.media_infos {
+  display: flex;
+}
+
+.media_infos p {
+  width: 90%;
+}
+
 form {
   display: flex;
   width: 100%;

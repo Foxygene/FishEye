@@ -38,17 +38,42 @@ const profileFactory = (photograph, userMedia) => {
     return headerSection;
   };
 
-  const getUserPhotosDOM = () => {
-    const boxPhoto = document.createElement('div');
+  const getUserMediaDOM = () => {
+    const mediaSection = document.createElement('div');
+    mediaSection.classList.add('media_section');
+    console.log('prout');
 
     //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
     //2 boucle sur les bons id pour cree les elements du DOM (photos)
-    userMedia.forEach((element = {}));
+    userMedia.forEach((element) => {
+      const mediaBox = document.createElement('div');
+      mediaBox.classList.add('media_box');
+      mediaSection.appendChild(mediaBox);
+
+      const media = document.createElement('img');
+      media.setAttribute('src', `assets/photographers/${id}/${element.image}`);
+      mediaBox.appendChild(media);
+
+      const mediaInfos = document.createElement('div');
+      mediaInfos.classList.add('media_infos');
+      mediaBox.appendChild(mediaInfos);
+
+      const mediaName = document.createElement('p');
+      mediaName.textContent = element.title;
+      mediaInfos.appendChild(mediaName);
+
+      const mediaLikeBox = document.createElement('div');
+      mediaInfos.appendChild(mediaLikeBox);
+
+      const mediaLikeCount = document.createElement('p');
+      mediaLikeCount.textContent = element.likes;
+      mediaLikeBox.appendChild(mediaLikeCount);
+    });
 
     //3 boucle (async!!!!) sur chaque element du DOM pour mettre les event listener
 
-    return boxPhoto;
+    return mediaSection;
   };
 
-  return { getUserHeaderDOM, getUserPhotosDOM };
+  return { getUserHeaderDOM, getUserMediaDOM };
 };
