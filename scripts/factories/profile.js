@@ -1,4 +1,4 @@
-const profileFactory = (photograph) => {
+const profileFactory = (photograph, userMedia) => {
   const { name, id, city, country, tagline, price, portrait } = photograph;
 
   const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
@@ -37,5 +37,18 @@ const profileFactory = (photograph) => {
 
     return headerSection;
   };
-  return { getUserHeaderDOM };
+
+  const getUserPhotosDOM = () => {
+    const boxPhoto = document.createElement('div');
+
+    //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
+    //2 boucle sur les bons id pour cree les elements du DOM (photos)
+    userMedia.forEach((element = {}));
+
+    //3 boucle (async!!!!) sur chaque element du DOM pour mettre les event listener
+
+    return boxPhoto;
+  };
+
+  return { getUserHeaderDOM, getUserPhotosDOM };
 };

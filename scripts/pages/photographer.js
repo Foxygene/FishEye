@@ -4,21 +4,39 @@ const getPhotographers = async () =>
 const params = new URLSearchParams(document.location.search);
 const photographerId = params.get('id');
 
-const idCheck = (photographers) =>
+const idCheckUser = (photographers) =>
   photographers.id === parseInt(photographerId);
 
-const displayProfile = async (photograph) => {
-  const headerSection = document.querySelector('#main');
+const idCheckPhotos = (media) => {
+  let userMedia = [];
 
-  const profileModel = profileFactory(photograph);
+  media.forEach((element) => {
+    if (element.photographerId === parseInt(photographerId)) {
+      userMedia.push(element);
+    }
+  });
+  return userMedia;
+};
+
+const displayProfile = async (photograph, media) => {
+  const profileSection = document.querySelector('#main');
+
+  const profileModel = profileFactory(photograph, media);
 
   const userHeaderDom = profileModel.getUserHeaderDOM();
-  headerSection.appendChild(userHeaderDom);
+  profileSection.appendChild(userHeaderDom);
+
+  const userPicturesDom = profileModel.getUserPhotosDOM();
+  profileSection.appendChild(userPicturesDom);
 };
 
 async function init() {
   const { photographers, media } = await getPhotographers();
-  displayProfile(photographers[photographers.findIndex(idCheck)]);
+
+  displayProfile(
+    photographers[photographers.findIndex(idCheckUser)],
+    idCheckPhotos(media)
+  );
 }
 
 init();
