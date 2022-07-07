@@ -1,15 +1,11 @@
-const getPhotographers = async () => fetch('/data/photographers.json').then((response) => response.json());
+const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
-const params = new URLSearchParams(document.location.search);
-const photographerId = params.get('id');
+const getPhotographerById = (photographers, id) =>
+  photographers.find((photographer) => photographer.id === parseInt(id));
 
-const idCheckUser = (photographers) => photographers.id === parseInt(photographerId);
+const getPhotographerMedias = (medias, id) => medias.filter((media) => media.photographerId === parseInt(id));
 
-const idCheckMedia = (media) => {
-  return media.filter((element) => element.photographerId === parseInt(photographerId));
-};
-
-const getTotalLikes = (userMedia) => {
+const countLikes = (userMedia) => {
   let totalLikes = 0;
 
   userMedia.forEach((element) => {
@@ -19,29 +15,27 @@ const getTotalLikes = (userMedia) => {
   return totalLikes;
 };
 
-const displayProfile = async (photograph, userMedia, userTotalLikes) => {
+async function main() {
+  const { photographers, medias } = await getData();
+
   const profileSection = document.querySelector('#main');
 
-  const profileModel = profileFactory(photograph, userMedia, userTotalLikes);
+  const params = new URLSearchParams(document.location.search);
+  const photographerId = params.get('id');
 
-  const userHeaderDom = profileModel.getUserHeaderDOM();
-  profileSection.appendChild(userHeaderDom);
+  const photographer = getPhotographerById(photographers, photographerId);
 
-  const userMediaDom = profileModel.getUserMediaDOM();
-  profileSection.appendChild(userMediaDom);
+  const photographerMedias = getPhotographerMedias(medias, photographerId);
 
-  const userTotalLikesDOM = profileModel.getUserTotalLikesDOM();
-  profileSection.appendChild(userTotalLikesDOM);
-};
+  const totalLikes = countLikes(photographerMedias);
 
-async function init() {
-  const { photographers, media } = await getPhotographers();
-
-  displayProfile(
-    photographers[photographers.findIndex(idCheckUser)],
-    idCheckMedia(media),
-    getTotalLikes(idCheckMedia(media))
+  const { userHeaderDom, userMediaDom, userTotalLikesDOM } = profileFactory(
+    photographer,
+    photographerMedias,
+    totalLikes
   );
+
+  profileSection.append(userHeaderDom, userMediaDom, userTotalLikesDOM);
 }
 
-init();
+main();

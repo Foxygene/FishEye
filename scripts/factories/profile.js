@@ -90,5 +90,9 @@ const profileFactory = (photograph, userMedia, userTotalLikes) => {
     return totalLikesSection;
   };
 
-  return { getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM };
+  const userHeaderDom = getUserHeaderDOM();
+  const userMediaDom = getUserMediaDOM();
+  const userTotalLikesDOM = getUserTotalLikesDOM();
+
+  return { userHeaderDom, userMediaDom, userTotalLikesDOM };
 };
