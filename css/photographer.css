@@ -129,9 +129,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
 .media_like_icon svg {
+  color: #312e2e;
+}
+
+.media_like_icon:hover svg {
+  color: #521010;
+  transform: scale(1.1);
+}
+
+.media_like_icon.active svg {
   color: #901c1c;
 }
 
