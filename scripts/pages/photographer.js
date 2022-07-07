@@ -32,8 +32,12 @@ async function main() {
   const totalLikes = countLikes(photographerMedias);
 
   const userHeaderDOM = getUserHeaderDOM(photographer);
-  const userMediaDOM = getUserMediaDOM(photographerMedias, photographerId);
-  const userTotalLikesDOM = getUserTotalLikesDOM(totalLikes);
+  let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes);
+  const userMediaDOM = getUserMediaDOM(photographerMedias, photographerId, (activeLike) => {
+    const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes);
+    userTotalLikesDOM.replaceWith(updatedLikesDOM);
+    userTotalLikesDOM = updatedLikesDOM;
+  });
 
   profileSection.append(userHeaderDOM, userMediaDOM, userTotalLikesDOM);
 }

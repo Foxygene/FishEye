@@ -38,7 +38,7 @@ export const getUserHeaderDOM = (photographer) => {
   return headerSection;
 };
 
-export const getUserMediaDOM = (userMedia, id) => {
+export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
   const mediaSection = document.createElement('div');
   mediaSection.classList.add('media_section');
 
@@ -79,12 +79,14 @@ export const getUserMediaDOM = (userMedia, id) => {
         mediaLikeCount.textContent = element.likes;
         mediaLikeIcon.classList.remove('active');
         activeLike = activeLike - 1;
+        onLikeChange(activeLike);
         return;
       }
 
       mediaLikeCount.textContent = element.likes + 1;
       mediaLikeIcon.classList.add('active');
       activeLike = activeLike + 1;
+      onLikeChange(activeLike);
     });
 
     mediaLikeBox.appendChild(mediaLikeIcon);
@@ -98,7 +100,7 @@ export const getUserTotalLikesDOM = (userTotalLikes) => {
   totalLikesSection.classList.add('total-likes-section');
 
   const totalLikesCounter = document.createElement('p');
-  totalLikesCounter.textContent = `${userTotalLikes + activeLike}`;
+  totalLikesCounter.textContent = userTotalLikes;
   totalLikesSection.appendChild(totalLikesCounter);
 
   return totalLikesSection;
