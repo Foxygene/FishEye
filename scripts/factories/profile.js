@@ -44,21 +44,22 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
   //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
   //2 boucle sur les bons id pour cree les elements du DOM (photos)
-  userMedia.forEach((element) => {
+  userMedia.forEach((media) => {
     const mediaBox = document.createElement('div');
+    mediaBox.setAttribute('data-id', media.id);
     mediaBox.classList.add('media_box');
     mediaSection.appendChild(mediaBox);
 
-    const media = document.createElement('img');
-    media.setAttribute('src', `assets/photographers/${id}/${element.image}`);
-    mediaBox.appendChild(media);
+    const img = document.createElement('img');
+    img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
+    mediaBox.appendChild(img);
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');
     mediaBox.appendChild(mediaInfos);
 
     const mediaName = document.createElement('p');
-    mediaName.textContent = element.title;
+    mediaName.textContent = media.title;
     mediaInfos.appendChild(mediaName);
 
     const mediaLikeBox = document.createElement('div');
@@ -66,7 +67,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     mediaInfos.appendChild(mediaLikeBox);
 
     const mediaLikeCount = document.createElement('p');
-    mediaLikeCount.textContent = element.likes;
+    mediaLikeCount.textContent = media.likes;
     mediaLikeBox.appendChild(mediaLikeCount);
 
     const mediaLikeIcon = document.createElement('div');
@@ -76,14 +77,14 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
     mediaLikeIcon.addEventListener('click', () => {
       if (mediaLikeIcon.classList.contains('active')) {
-        mediaLikeCount.textContent = element.likes;
+        mediaLikeCount.textContent = media.likes;
         mediaLikeIcon.classList.remove('active');
         activeLike = activeLike - 1;
         onLikeChange(activeLike);
         return;
       }
 
-      mediaLikeCount.textContent = element.likes + 1;
+      mediaLikeCount.textContent = media.likes + 1;
       mediaLikeIcon.classList.add('active');
       activeLike = activeLike + 1;
       onLikeChange(activeLike);
