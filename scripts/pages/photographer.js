@@ -1,3 +1,5 @@
+import { getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM } from '../factories/profile.js';
+
 const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
 const getPhotographerById = (photographers, id) =>
@@ -29,13 +31,11 @@ async function main() {
 
   const totalLikes = countLikes(photographerMedias);
 
-  const { userHeaderDom, userMediaDom, userTotalLikesDOM } = profileFactory(
-    photographer,
-    photographerMedias,
-    totalLikes
-  );
+  const userHeaderDOM = getUserHeaderDOM(photographer);
+  const userMediaDOM = getUserMediaDOM(photographerMedias, photographerId);
+  const userTotalLikesDOM = getUserTotalLikesDOM(totalLikes);
 
-  profileSection.append(userHeaderDom, userMediaDom, userTotalLikesDOM);
+  profileSection.append(userHeaderDOM, userMediaDOM, userTotalLikesDOM);
 }
 
 main();

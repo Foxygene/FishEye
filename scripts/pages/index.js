@@ -1,11 +1,12 @@
+import { getUserCardDOM } from '../factories/photographerCard.js';
+
 const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector('.photographer_section');
 
   photographers.forEach((photographer) => {
-    const photographerModel = photographerFactory(photographer);
-    const userCardDOM = photographerModel.getUserCardDOM();
+    const userCardDOM = getUserCardDOM(photographer);
     photographersSection.appendChild(userCardDOM);
   });
 }
