@@ -1,4 +1,4 @@
-const profileFactory = (photograph, userMedia) => {
+const profileFactory = (photograph, userMedia, userTotalLikes) => {
   const { name, id, city, country, tagline, price, portrait } = photograph;
 
   const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
@@ -41,7 +41,6 @@ const profileFactory = (photograph, userMedia) => {
   const getUserMediaDOM = () => {
     const mediaSection = document.createElement('div');
     mediaSection.classList.add('media_section');
-    console.log('prout');
 
     //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
     //2 boucle sur les bons id pour cree les elements du DOM (photos)
@@ -76,11 +75,20 @@ const profileFactory = (photograph, userMedia) => {
         '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.4 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.5 4.4 3 7.5 3A6 6 0 0 1 12 5a6 6 0 0 1 4.5-2c3 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.6 11.5L12 21.4Z"/></svg>';
       mediaLikeBox.appendChild(mediaLikeIcon);
     });
-
     //3 boucle (async!!!!) sur chaque element du DOM pour mettre les event listener
-
     return mediaSection;
   };
 
-  return { getUserHeaderDOM, getUserMediaDOM };
+  const getUserTotalLikesDOM = () => {
+    const totalLikesSection = document.createElement('div');
+    totalLikesSection.classList.add('total-likes-section');
+
+    const totalLikesCounter = document.createElement('p');
+    totalLikesCounter.textContent = `${userTotalLikes}`;
+    totalLikesSection.appendChild(totalLikesCounter);
+
+    return totalLikesSection;
+  };
+
+  return { getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM };
 };
