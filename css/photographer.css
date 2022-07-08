@@ -151,6 +151,7 @@
   bottom: 0;
   right: 100px;
   background: #db8876;
+  width: 200px;
 
   display: flex;
   justify-content: space-around;
