@@ -32,9 +32,9 @@ async function main() {
   const totalLikes = countLikes(photographerMedias);
 
   const userHeaderDOM = getUserHeaderDOM(photographer);
-  let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes);
+  let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes, photographer.price);
   const userMediaDOM = getUserMediaDOM(photographerMedias, photographerId, (activeLike) => {
-    const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes);
+    const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes, photographer.price);
     userTotalLikesDOM.replaceWith(updatedLikesDOM);
     userTotalLikesDOM = updatedLikesDOM;
   });

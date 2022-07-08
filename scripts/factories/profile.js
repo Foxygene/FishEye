@@ -44,6 +44,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
   //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
   //2 boucle sur les bons id pour cree les elements du DOM (photos)
+
   userMedia.forEach((media) => {
     const mediaBox = document.createElement('div');
     mediaBox.setAttribute('data-id', media.id);
@@ -96,13 +97,27 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
   return mediaSection;
 };
 
-export const getUserTotalLikesDOM = (userTotalLikes) => {
+export const getUserTotalLikesDOM = (userTotalLikes, price) => {
   const totalLikesSection = document.createElement('div');
   totalLikesSection.classList.add('total-likes-section');
 
+  const totalLikesBox = document.createElement('div');
+  totalLikesBox.classList.add('total-likes-box');
+  totalLikesSection.appendChild(totalLikesBox);
+
   const totalLikesCounter = document.createElement('p');
   totalLikesCounter.textContent = userTotalLikes;
-  totalLikesSection.appendChild(totalLikesCounter);
+  totalLikesBox.appendChild(totalLikesCounter);
+
+  const totalLikeIcon = document.createElement('div');
+  totalLikeIcon.classList.add('total-likes-icon');
+  totalLikeIcon.innerHTML =
+    '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.4 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.5 4.4 3 7.5 3A6 6 0 0 1 12 5a6 6 0 0 1 4.5-2c3 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.6 11.5L12 21.4Z"/></svg>';
+  totalLikesBox.appendChild(totalLikeIcon);
+
+  const dailyPrice = document.createElement('p');
+  dailyPrice.textContent = `${price}€/jour`;
+  totalLikesSection.appendChild(dailyPrice);
 
   return totalLikesSection;
 };

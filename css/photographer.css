@@ -150,6 +150,31 @@
   position: fixed;
   bottom: 0;
   right: 100px;
+  background: #db8876;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+
+  font-weight: 500;
+}
+
+.total-likes-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-right: 25px;
+}
+
+.total-likes-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 30px;
 }
 
 form {
