@@ -1,3 +1,4 @@
+import { getSelectDOM } from '../utils/selectDOM.js';
 let activeLike = 0;
 export const getUserHeaderDOM = (photographer) => {
   const { name, id, city, country, tagline, price, portrait } = photographer;
@@ -36,6 +37,20 @@ export const getUserHeaderDOM = (photographer) => {
   headerSection.appendChild(userPicture);
 
   return headerSection;
+};
+
+export const getFilterSelectorDOM = (options) => {
+  const filterBox = document.createElement('div');
+  filterBox.classList.add('filter-box');
+
+  const filterText = document.createElement('p');
+  filterText.textContent = 'Trier par';
+  filterBox.appendChild(filterText);
+
+  const select = getSelectDOM(options);
+  filterBox.appendChild(select);
+
+  return filterBox;
 };
 
 export const getUserMediaDOM = (userMedia, id, onLikeChange) => {

@@ -83,8 +83,17 @@
   color: #525252;
 }
 
+.filter-box {
+  margin: 20px 100px;
+  display: flex;
+}
+
+.filter-box p {
+  margin-right: 10px;
+}
+
 .media_section {
-  margin: 50px 100px;
+  margin: 0 100px 50px 100px;
   height: 100%;
 
   display: flex;

@@ -1,4 +1,4 @@
-import { getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM } from '../factories/profile.js';
+import { getFilterSelectorDOM, getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM } from '../factories/profile.js';
 
 const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
@@ -32,6 +32,7 @@ async function main() {
   const totalLikes = countLikes(photographerMedias);
 
   const userHeaderDOM = getUserHeaderDOM(photographer);
+  const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre']);
   let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes, photographer.price);
   const userMediaDOM = getUserMediaDOM(photographerMedias, photographerId, (activeLike) => {
     const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes, photographer.price);
@@ -39,7 +40,7 @@ async function main() {
     userTotalLikesDOM = updatedLikesDOM;
   });
 
-  profileSection.append(userHeaderDOM, userMediaDOM, userTotalLikesDOM);
+  profileSection.append(userHeaderDOM, filterSelectorDOM, userMediaDOM, userTotalLikesDOM);
 }
 
 main();
