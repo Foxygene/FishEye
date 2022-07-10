@@ -39,7 +39,7 @@ export const getUserHeaderDOM = (photographer) => {
   return headerSection;
 };
 
-export const getFilterSelectorDOM = (options) => {
+export const getFilterSelectorDOM = (options, onSelectChange) => {
   const filterBox = document.createElement('div');
   filterBox.classList.add('filter-box');
 
@@ -48,6 +48,11 @@ export const getFilterSelectorDOM = (options) => {
   filterBox.appendChild(filterText);
 
   const select = getSelectDOM(options);
+
+  select.addEventListener('change', (event) => {
+    onSelectChange(event.currentTarget.value);
+  });
+
   filterBox.appendChild(select);
 
   return filterBox;
