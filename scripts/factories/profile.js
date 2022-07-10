@@ -51,9 +51,17 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     mediaBox.classList.add('media_box');
     mediaSection.appendChild(mediaBox);
 
-    const img = document.createElement('img');
-    img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
-    mediaBox.appendChild(img);
+    if (media.image) {
+      const img = document.createElement('img');
+      img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
+      mediaBox.appendChild(img);
+    }
+
+    if (media.video) {
+      const vid = document.createElement('video');
+      vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
+      mediaBox.appendChild(vid);
+    }
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');

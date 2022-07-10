@@ -100,7 +100,8 @@
   flex-direction: column;
 }
 
-.media_box img {
+.media_box img,
+.media_box video {
   object-fit: cover;
   object-position: 50% 35%;
   width: 350px;
