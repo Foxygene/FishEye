@@ -76,7 +76,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
   userMedia.forEach((media) => {
     const mediaBox = document.createElement('div');
-    mediaBox.setAttribute('data-id', media.id);
+    mediaBox.dataset.id = media.id;
     mediaBox.classList.add('media_box');
     mediaSection.appendChild(mediaBox);
 
