@@ -47,13 +47,22 @@ export const getFilterSelectorDOM = (options, onSelectChange) => {
   filterText.textContent = 'Trier par';
   filterBox.appendChild(filterText);
 
+  const selectBox = document.createElement('div');
+  selectBox.classList.add('custom-select');
+  filterBox.appendChild(selectBox);
+
   const select = getSelectDOM(options);
 
   select.addEventListener('change', (event) => {
     onSelectChange(event.currentTarget.value);
   });
 
-  filterBox.appendChild(select);
+  selectBox.appendChild(select);
+
+  const selectArrow = document.createElement('img');
+  selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
+  selectArrow.classList.add('select-arrow');
+  selectBox.appendChild(selectArrow);
 
   return filterBox;
 };

@@ -46,9 +46,6 @@ async function main() {
     }
   });
 
-  console.log(popPhotographerMedia, datePhotographerMedia, titlePhotographerMedia);
-  console.log(photographerMedias);
-
   const totalLikes = countLikes(photographerMedias);
 
   const userHeaderDOM = getUserHeaderDOM(photographer);

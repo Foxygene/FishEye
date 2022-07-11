@@ -92,6 +92,31 @@
   margin-right: 10px;
 }
 
+.custom-select {
+  position: relative;
+}
+
+select {
+  font-size: 18px;
+  height: 56.6px;
+  padding: 1em 3em 1em 1em;
+  background-color: #901c1c;
+  border-radius: 5px;
+  color: white;
+  border: 0;
+  appearance: none;
+}
+
+.select-arrow {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  display: block;
+  height: 100%;
+  width: 16px;
+  pointer-events: none;
+}
+
 .media_section {
   margin: 0 100px 50px 100px;
   height: 100%;
