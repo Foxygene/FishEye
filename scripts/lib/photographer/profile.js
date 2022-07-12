@@ -1,4 +1,20 @@
-import { getSelectDOM } from '../utils/selectDOM.js';
+import { getSelectDOM } from '../utils.js';
+
+export const getPhotographerById = (photographers, id) =>
+  photographers.find((photographer) => photographer.id === parseInt(id));
+
+export const getPhotographerMedias = (medias, id) => medias.filter((media) => media.photographerId === parseInt(id));
+
+export const countLikes = (userMedia) => {
+  let totalLikes = 0;
+
+  userMedia.forEach((element) => {
+    totalLikes = totalLikes + element.likes;
+  });
+
+  return totalLikes;
+};
+
 let activeLike = 0;
 export const getUserHeaderDOM = (photographer) => {
   const { name, id, city, country, tagline, price, portrait } = photographer;
@@ -71,9 +87,6 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
   const mediaSection = document.createElement('div');
   mediaSection.classList.add('media_section');
 
-  //1 boucle pour trier les photos avec le bon id CHECKED BEFORE !!!!!!!!!!!! (in photographer.js)
-  //2 boucle sur les bons id pour cree les elements du DOM (photos)
-
   userMedia.forEach((media) => {
     const mediaBox = document.createElement('div');
     mediaBox.dataset.id = media.id;
@@ -130,7 +143,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
     mediaLikeBox.appendChild(mediaLikeIcon);
   });
-  //3 boucle (async!!!!) sur chaque element du DOM pour mettre les event listener
+
   return mediaSection;
 };
 

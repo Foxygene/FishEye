@@ -1,96 +1,84 @@
-import { getFilterSelectorDOM, getUserHeaderDOM, getUserMediaDOM, getUserTotalLikesDOM } from '../factories/profile.js';
+import {
+  countLikes,
+  getFilterSelectorDOM,
+  getPhotographerById,
+  getPhotographerMedias,
+  getUserHeaderDOM,
+  getUserMediaDOM,
+  getUserTotalLikesDOM,
+} from '../lib/photographer/profile.js';
+import { getData } from '../lib/utils.js';
 
-const getData = async () => fetch('/data/data.json').then((response) => response.json());
+const { photographers, medias } = await getData();
 
-const getPhotographerById = (photographers, id) =>
-  photographers.find((photographer) => photographer.id === parseInt(id));
+const profileSection = document.querySelector('#main');
 
-const getPhotographerMedias = (medias, id) => medias.filter((media) => media.photographerId === parseInt(id));
+const params = new URLSearchParams(document.location.search);
+const photographerId = params.get('id');
 
-const countLikes = (userMedia) => {
-  let totalLikes = 0;
+const photographer = getPhotographerById(photographers, photographerId);
 
-  userMedia.forEach((element) => {
-    totalLikes = totalLikes + element.likes;
-  });
+const photographerMedias = getPhotographerMedias(medias, photographerId);
+const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
 
-  return totalLikes;
-};
+const datePhotographerMedia = [...photographerMedias].sort((a, b) => {
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
+  return dateA - dateB;
+});
+const titlePhotographerMedia = [...photographerMedias].sort((a, b) => {
+  const titleA = a.title.toUpperCase();
+  const titleB = b.title.toUpperCase();
+  if (titleA < titleB) {
+    return -1;
+  }
+  if (titleA > titleB) {
+    return 1;
+  }
+});
 
-async function main() {
-  const { photographers, medias } = await getData();
+const totalLikes = countLikes(photographerMedias);
 
-  const profileSection = document.querySelector('#main');
+const userHeaderDOM = getUserHeaderDOM(photographer);
 
-  const params = new URLSearchParams(document.location.search);
-  const photographerId = params.get('id');
+let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes, photographer.price);
+const userMediaDOM = getUserMediaDOM(popPhotographerMedia, photographerId, (activeLike) => {
+  const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes, photographer.price);
+  userTotalLikesDOM.replaceWith(updatedLikesDOM);
+  userTotalLikesDOM = updatedLikesDOM;
+});
 
-  const photographer = getPhotographerById(photographers, photographerId);
+const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'], (selected) => {
+  if (selected === 'Popularité') {
+    let mediaCounter = 0;
+    popPhotographerMedia.forEach((media) => {
+      const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
 
-  const photographerMedias = getPhotographerMedias(medias, photographerId);
-  const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
+      currentMedia.style.order = mediaCounter;
+      mediaCounter = mediaCounter + 1;
+    });
+  }
 
-  const datePhotographerMedia = [...photographerMedias].sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateA - dateB;
-  });
-  const titlePhotographerMedia = [...photographerMedias].sort((a, b) => {
-    const titleA = a.title.toUpperCase();
-    const titleB = b.title.toUpperCase();
-    if (titleA < titleB) {
-      return -1;
-    }
-    if (titleA > titleB) {
-      return 1;
-    }
-  });
+  if (selected === 'Date') {
+    let mediaCounter = 0;
+    datePhotographerMedia.forEach((media) => {
+      const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
 
-  const totalLikes = countLikes(photographerMedias);
+      currentMedia.style.order = mediaCounter;
+      mediaCounter = mediaCounter + 1;
+    });
+  }
 
-  const userHeaderDOM = getUserHeaderDOM(photographer);
+  if (selected === 'Titre') {
+    console.log('prout');
+    let mediaCounter = 0;
+    titlePhotographerMedia.forEach((media) => {
+      const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
 
-  let userTotalLikesDOM = getUserTotalLikesDOM(totalLikes, photographer.price);
-  const userMediaDOM = getUserMediaDOM(popPhotographerMedia, photographerId, (activeLike) => {
-    const updatedLikesDOM = getUserTotalLikesDOM(activeLike + totalLikes, photographer.price);
-    userTotalLikesDOM.replaceWith(updatedLikesDOM);
-    userTotalLikesDOM = updatedLikesDOM;
-  });
+      currentMedia.style.order = mediaCounter;
+      mediaCounter = mediaCounter + 1;
+    });
+  }
+});
 
-  const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'], (selected) => {
-    if (selected === 'Popularité') {
-      let mediaCounter = 0;
-      popPhotographerMedia.forEach((media) => {
-        const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        mediaCounter = mediaCounter + 1;
-      });
-    }
-
-    if (selected === 'Date') {
-      let mediaCounter = 0;
-      datePhotographerMedia.forEach((media) => {
-        const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        mediaCounter = mediaCounter + 1;
-      });
-    }
-
-    if (selected === 'Titre') {
-      console.log('prout');
-      let mediaCounter = 0;
-      titlePhotographerMedia.forEach((media) => {
-        const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        mediaCounter = mediaCounter + 1;
-      });
-    }
-  });
-
-  profileSection.append(userHeaderDOM, filterSelectorDOM, userMediaDOM, userTotalLikesDOM);
-}
-
-main();
+profileSection.append(userHeaderDOM, filterSelectorDOM, userMediaDOM, userTotalLikesDOM);
