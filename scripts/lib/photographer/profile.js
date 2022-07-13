@@ -1,4 +1,5 @@
-import { getSelectDOM } from '../utils.js';
+import { getSelectDOM, toggleVisibility } from '../utils.js';
+import { displayModal } from './contactForm.js';
 
 export const getPhotographerById = (photographers, id) =>
   photographers.find((photographer) => photographer.id === parseInt(id));
@@ -44,7 +45,10 @@ export const getUserHeaderDOM = (photographer) => {
 
   const contactButton = document.createElement('button');
   contactButton.classList.add('contact_button');
-  contactButton.setAttribute('onclick', 'displayModal()');
+  contactButton.addEventListener('click', () => {
+    const contactModal = document.querySelector('#contact_modal');
+    toggleVisibility(contactModal);
+  });
   contactButton.textContent = 'Contactez-moi';
   headerSection.appendChild(contactButton);
 

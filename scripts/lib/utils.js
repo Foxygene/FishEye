@@ -12,3 +12,7 @@ export const getSelectDOM = (options) => {
 
   return select;
 };
+
+export const toggleVisibility = (element) => {
+  element.classList.toggle('hidden');
+};

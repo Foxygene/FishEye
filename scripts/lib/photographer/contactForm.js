@@ -1,9 +1,8 @@
-function displayModal() {
-  const modal = document.getElementById('contact_modal');
-  modal.style.display = 'block';
-}
+export const displayModal = (element) => {
+  const modal = document.querySelector('.modal');
 
-function closeModal() {
-  const modal = document.getElementById('contact_modal');
-  modal.style.display = 'none';
-}
+  const photographerName = document.createElement('h2');
+  photographerName.textContent = element.name;
+  photographerName.classList.add('header_text');
+  modal.insertBefore(photographerName, modal.children[1]);
+};

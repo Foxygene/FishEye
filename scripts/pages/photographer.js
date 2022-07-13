@@ -1,3 +1,4 @@
+import { displayModal } from '../lib/photographer/contactForm.js';
 import {
   countLikes,
   getFilterSelectorDOM,
@@ -7,9 +8,15 @@ import {
   getUserMediaDOM,
   getUserTotalLikesDOM,
 } from '../lib/photographer/profile.js';
-import { getData } from '../lib/utils.js';
+import { getData, toggleVisibility } from '../lib/utils.js';
 
 const { photographers, medias } = await getData();
+
+const modalCloseButton = document.querySelector('.contact_close_button');
+modalCloseButton.addEventListener('click', () => {
+  const contactModal = document.querySelector('#contact_modal');
+  toggleVisibility(contactModal);
+});
 
 const profileSection = document.querySelector('#main');
 
@@ -82,3 +89,4 @@ const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'],
 });
 
 profileSection.append(userHeaderDOM, filterSelectorDOM, userMediaDOM, userTotalLikesDOM);
+displayModal(photographer);
