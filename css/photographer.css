@@ -253,6 +253,6 @@ form input {
   border-radius: 5px;
 }
 
-form .your_message {
+form #your_message {
   height: 120px;
 }
