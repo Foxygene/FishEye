@@ -1,4 +1,5 @@
 import { getSelectDOM, toggleVisibility } from '../utils.js';
+import { getCarouselDOM } from './carousel.js';
 import { displayModal } from './contactForm.js';
 
 export const getPhotographerById = (photographers, id) =>
@@ -108,6 +109,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
       vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
       mediaBox.appendChild(vid);
     }
+    mediaBox.firstChild.addEventListener('click', getCarouselDOM);
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');
