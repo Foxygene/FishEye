@@ -21,4 +21,8 @@ export const getCarouselDOM = () => {
 
   const close = document.createElement('div');
   carousel.appendChild(close);
+
+  const closeIcon = document.createElement('img');
+  close.setAttribute('src', 'assets/icons/close.svg');
+  close.appendChild(closeIcon);
 };
