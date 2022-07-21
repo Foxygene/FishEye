@@ -1,4 +1,4 @@
-import { getUserCardDOM } from '../factories/photographerCard.js';
+import { getUserCardDOM } from '../lib/index/photographerCard.js';
 import { getData } from '../lib/utils.js';
 
 const { photographers } = await getData();
