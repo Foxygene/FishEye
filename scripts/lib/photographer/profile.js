@@ -116,6 +116,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     mediaBox.appendChild(mediaInfos);
 
     const mediaName = document.createElement('p');
+    mediaName.classList.add('media_name');
     mediaName.textContent = media.title;
     mediaInfos.appendChild(mediaName);
 
@@ -124,6 +125,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     mediaInfos.appendChild(mediaLikeBox);
 
     const mediaLikeCount = document.createElement('p');
+    mediaLikeCount.classList.add('media_like_count');
     mediaLikeCount.textContent = media.likes;
     mediaLikeBox.appendChild(mediaLikeCount);
 
@@ -136,6 +138,8 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
       if (mediaLikeIcon.classList.contains('active')) {
         mediaLikeCount.textContent = media.likes;
         mediaLikeIcon.classList.remove('active');
+        mediaLikeCount.classList.remove('active');
+
         activeLike = activeLike - 1;
         onLikeChange(activeLike);
         return;
@@ -143,6 +147,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
       mediaLikeCount.textContent = media.likes + 1;
       mediaLikeIcon.classList.add('active');
+      mediaLikeCount.classList.add('active');
       activeLike = activeLike + 1;
       onLikeChange(activeLike);
     });

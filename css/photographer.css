@@ -152,6 +152,7 @@ select {
   object-position: 50% 35%;
   width: 350px;
   height: 300px;
+  cursor: pointer;
 }
 
 .media_infos {
@@ -162,13 +163,30 @@ select {
   width: 90%;
 }
 
+.media_name {
+  color: #901c1c;
+}
+
 .media_like_box {
   display: flex;
   justify-content: center;
 }
 
 .media_like_box p {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.media_like_count {
+  font-size: 16px;
+  margin: 0;
+}
+
+.media_like_count.active {
+  color: #901c1c;
+  font-size: 19px;
+  font-weight: 500;
 }
 
 .media_like_icon {
