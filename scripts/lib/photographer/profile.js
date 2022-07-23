@@ -109,7 +109,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
       vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
       mediaBox.appendChild(vid);
     }
-    mediaBox.firstChild.addEventListener('click', getCarouselDOM);
+    mediaBox.firstChild.addEventListener('click', () => getCarouselDOM(media, id));
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');

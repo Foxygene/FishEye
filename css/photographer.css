@@ -211,6 +211,20 @@ select {
   color: #901c1c;
 }
 
+.carousel {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  top: 0;
+}
+
+.carousel_media_box img,
+.carousel_media_box video {
+  height: 100%;
+  width: 100%;
+}
+
 .total-likes-section {
   position: fixed;
   bottom: 0;
