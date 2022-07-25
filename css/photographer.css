@@ -212,6 +212,8 @@ select {
 }
 
 .carousel {
+  display: flex;
+  align-items: center;
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -219,6 +221,31 @@ select {
   top: 0;
 }
 
+.right_arrow,
+.left_arrow {
+  width: 48px;
+  cursor: pointer;
+}
+
+.left_arrow {
+  transform: scale(-1);
+  margin-right: 20px;
+  margin-left: 40px;
+}
+
+.right_arrow {
+  margin-right: 40px;
+  margin-left: 20px;
+}
+
+.carousel_close_btn {
+  position: fixed;
+  top: 20px;
+  right: 40px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
 .carousel_media_box img,
 .carousel_media_box video {
   height: 100%;
