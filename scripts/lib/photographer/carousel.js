@@ -1,3 +1,5 @@
+import { mediaFactory } from '../utils.js';
+
 export const getCarouselDOM = (media, id) => {
   const carousel = document.createElement('div');
   carousel.classList.add('carousel');
@@ -11,17 +13,8 @@ export const getCarouselDOM = (media, id) => {
   mediaBox.classList.add('carousel_media_box');
   carousel.appendChild(mediaBox);
 
-  if (media.image) {
-    const img = document.createElement('img');
-    img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
-    mediaBox.appendChild(img);
-  }
-
-  if (media.video) {
-    const vid = document.createElement('video');
-    vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
-    mediaBox.appendChild(vid);
-  }
+  const mediaElement = mediaFactory(id, media);
+  mediaBox.appendChild(mediaElement);
 
   const mediaTitle = document.createElement('p');
   mediaBox.appendChild(mediaTitle);
@@ -38,6 +31,7 @@ export const getCarouselDOM = (media, id) => {
   const rightArrow = document.createElement('img');
   rightArrow.classList.add('right_arrow');
   rightArrow.setAttribute('src', 'assets/icons/right-arrow.png');
+  rightArrow.addEventListener('click', () => handleImageChange('forward'));
   carousel.appendChild(rightArrow);
 
   document.querySelector('main').append(carousel);

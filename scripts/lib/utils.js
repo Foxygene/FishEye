@@ -16,3 +16,18 @@ export const getSelectDOM = (options) => {
 export const toggleVisibility = (element) => {
   element.classList.toggle('hidden');
 };
+
+export const mediaFactory = (id, media) => {
+  if (media.image) {
+    const img = document.createElement('img');
+    img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
+    return img;
+  }
+
+  if (media.video) {
+    const vid = document.createElement('video');
+    vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
+    return vid;
+  }
+  throw new Error('media invalid');
+};
