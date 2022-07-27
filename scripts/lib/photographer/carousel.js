@@ -1,38 +1,61 @@
+import { popPhotographerMedia } from '../../pages/photographer.js';
 import { mediaFactory } from '../utils.js';
 
 export const getCarouselDOM = (media, id) => {
+  // const imageData = [ 'image1.png', 'img2.png', 'img3.png' ];
+
+  const carouselContainer = document.createElement('div');
+  carouselContainer.classList.add('carousel_container');
+
   const carousel = document.createElement('div');
   carousel.classList.add('carousel');
+  carouselContainer.appendChild(carousel);
+
+  const leftButton = document.createElement('button');
+  leftButton.classList.add('carousel_button', 'carousel_button_left');
+  carousel.appendChild(leftButton);
 
   const leftArrow = document.createElement('img');
-  leftArrow.classList.add('left_arrow');
   leftArrow.setAttribute('src', 'assets/icons/right-arrow.png');
-  carousel.appendChild(leftArrow);
+  leftButton.appendChild(leftArrow);
 
-  const mediaBox = document.createElement('div');
-  mediaBox.classList.add('carousel_media_box');
-  carousel.appendChild(mediaBox);
+  const carouselTrackContainer = document.createElement('div');
+  carouselTrackContainer.classList.add('carousel_track_container');
+  carousel.appendChild(carouselTrackContainer);
 
-  const mediaElement = mediaFactory(id, media);
-  mediaBox.appendChild(mediaElement);
+  const carouselTrack = document.createElement('ul');
+  carouselTrack.classList.add('carousel_track');
+  carouselTrackContainer.appendChild(carouselTrack);
+  popPhotographerMedia.forEach((element) => {
+    const carouselSlide = document.createElement('li');
+    carouselSlide.classList.add('carousel_slide');
+    carouselTrack.appendChild(carouselSlide);
 
-  const mediaTitle = document.createElement('p');
-  mediaBox.appendChild(mediaTitle);
+    const slideMedia = mediaFactory(id, element);
+    slideMedia.classList.add('slide_media');
+    carouselSlide.appendChild(slideMedia);
 
-  const close = document.createElement('img');
+    const slideTitle = document.createElement('p');
+    slideTitle.textContent = element.title;
+    carouselSlide.appendChild(slideTitle);
+  });
+
+  const close = document.createElement('button');
   close.classList.add('carousel_close_btn');
   close.setAttribute('src', 'assets/icons/close-black.svg');
   close.addEventListener('click', () => {
-    const carousel = document.querySelector('.carousel');
+    const carousel = document.querySelector('.carousel_container');
     carousel.remove();
   });
   carousel.appendChild(close);
 
-  const rightArrow = document.createElement('img');
-  rightArrow.classList.add('right_arrow');
-  rightArrow.setAttribute('src', 'assets/icons/right-arrow.png');
-  rightArrow.addEventListener('click', () => handleImageChange('forward'));
-  carousel.appendChild(rightArrow);
+  const rightButton = document.createElement('button');
+  rightButton.classList.add('carousel_button', 'carousel_button_right');
+  carousel.appendChild(rightButton);
 
-  document.querySelector('main').append(carousel);
+  const rightArrow = document.createElement('img');
+  rightArrow.setAttribute('src', 'assets/icons/right-arrow.png');
+  rightButton.appendChild(rightArrow);
+
+  document.querySelector('main').append(carouselContainer);
 };

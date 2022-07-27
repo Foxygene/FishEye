@@ -26,7 +26,7 @@ const photographerId = params.get('id');
 const photographer = getPhotographerById(photographers, photographerId);
 
 const photographerMedias = getPhotographerMedias(medias, photographerId);
-const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
+export const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
 
 const datePhotographerMedia = [...photographerMedias].sort((a, b) => {
   const dateA = new Date(a.date);
