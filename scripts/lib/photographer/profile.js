@@ -1,6 +1,6 @@
 import { getSelectDOM, mediaFactory, toggleVisibility } from '../utils.js';
 import { getCarouselDOM } from './carousel.js';
-import { displayModal } from './contactForm.js';
+import { addCarouselInteractions } from './carouselInteractions.js';
 
 export const getPhotographerById = (photographers, id) =>
   photographers.find((photographer) => photographer.id === parseInt(id));
@@ -100,7 +100,10 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
     const mediaElement = mediaFactory(id, media);
     mediaBox.appendChild(mediaElement);
-    mediaBox.firstChild.addEventListener('click', () => getCarouselDOM(media, id));
+    mediaBox.firstChild.addEventListener('click', () => {
+      getCarouselDOM(media, id);
+      addCarouselInteractions();
+    });
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');
