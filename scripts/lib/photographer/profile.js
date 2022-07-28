@@ -101,7 +101,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     const mediaElement = mediaFactory(id, media);
     mediaBox.appendChild(mediaElement);
     mediaBox.firstChild.addEventListener('click', () => {
-      getCarouselDOM(media, id);
+      getCarouselDOM(media, id, mediaElement);
       addCarouselInteractions();
     });
 

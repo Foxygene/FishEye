@@ -1,9 +1,7 @@
 import { popPhotographerMedia } from '../../pages/photographer.js';
 import { mediaFactory } from '../utils.js';
 
-export const getCarouselDOM = (media, id) => {
-  // const imageData = [ 'image1.png', 'img2.png', 'img3.png' ];
-
+export const getCarouselDOM = (media, id, clickedMedia) => {
   const carouselContainer = document.createElement('div');
   carouselContainer.classList.add('carousel_container');
 
@@ -32,6 +30,9 @@ export const getCarouselDOM = (media, id) => {
     carouselTrack.appendChild(carouselSlide);
 
     const slideMedia = mediaFactory(id, element);
+    if (slideMedia.src === clickedMedia.src) {
+      carouselSlide.classList.add('current_slide');
+    }
     slideMedia.classList.add('slide_media');
     carouselSlide.appendChild(slideMedia);
 
@@ -40,14 +41,17 @@ export const getCarouselDOM = (media, id) => {
     carouselSlide.appendChild(slideTitle);
   });
 
-  const close = document.createElement('button');
-  close.classList.add('carousel_close_btn');
-  close.setAttribute('src', 'assets/icons/close-black.svg');
-  close.addEventListener('click', () => {
+  const closeButton = document.createElement('button');
+  closeButton.classList.add('carousel_close_btn');
+  closeButton.addEventListener('click', () => {
     const carousel = document.querySelector('.carousel_container');
     carousel.remove();
   });
-  carousel.appendChild(close);
+  carousel.appendChild(closeButton);
+
+  const closeIcon = document.createElement('img');
+  closeIcon.setAttribute('src', 'assets/icons/close-black.svg');
+  closeButton.appendChild(closeIcon);
 
   const rightButton = document.createElement('button');
   rightButton.classList.add('carousel_button', 'carousel_button_right');
