@@ -217,33 +217,50 @@ select {
   width: 100vw;
   background-color: white;
   top: 0;
+  animation: fadeIn 500ms;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .carousel {
   position: relative;
-  height: 800px;
-  width: 1050px;
+  height: 100%;
+  width: 80vw;
   margin: 0 auto;
 }
 
 .carousel_track_container {
-  background-color: lightgreen;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .carousel_track {
-  padding: 0;
-  margin: 0;
   list-style: none;
+  position: relative;
+  height: 100%;
+  transition: transform 250ms ease-in;
 }
 
 .carousel_slide {
-  background-color: white;
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .slide_media {
@@ -285,6 +302,8 @@ select {
   right: 40px;
   width: 48px;
   height: 48px;
+  background: transparent;
+  border: 0;
   cursor: pointer;
 }
 
