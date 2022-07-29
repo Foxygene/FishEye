@@ -30,9 +30,11 @@ export const getCarouselDOM = (id, clickedMedia) => {
     carouselTrack.appendChild(carouselSlide);
 
     const slideMedia = mediaFactory(id, element);
-    if (slideMedia.src === clickedMedia.src) {
-      carouselSlide.classList.add('current_slide');
+    if (slideMedia.localName === 'video') {
+      slideMedia.autoplay = true;
+      slideMedia.loop = true;
     }
+    if (slideMedia.src === clickedMedia.src) carouselSlide.classList.add('current_slide');
     slideMedia.classList.add('slide_media');
     carouselSlide.appendChild(slideMedia);
 
