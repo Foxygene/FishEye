@@ -263,9 +263,6 @@ select {
   padding-bottom: 40px;
 }
 
-.carousel_slide.current_slide video {
-}
-
 .slide_media {
   width: 100%;
   height: 100%;
