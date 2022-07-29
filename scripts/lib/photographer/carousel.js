@@ -1,7 +1,7 @@
 import { popPhotographerMedia } from '../../pages/photographer.js';
 import { mediaFactory } from '../utils.js';
 
-export const getCarouselDOM = (media, id, clickedMedia) => {
+export const getCarouselDOM = (id, clickedMedia) => {
   const carouselContainer = document.createElement('div');
   carouselContainer.classList.add('carousel_container');
 
@@ -14,7 +14,7 @@ export const getCarouselDOM = (media, id, clickedMedia) => {
   carousel.appendChild(leftButton);
 
   const leftArrow = document.createElement('img');
-  leftArrow.setAttribute('src', 'assets/icons/right-arrow.png');
+  leftArrow.setAttribute('src', 'assets/icons/right-arrow-red.svg');
   leftButton.appendChild(leftArrow);
 
   const carouselTrackContainer = document.createElement('div');
@@ -50,7 +50,7 @@ export const getCarouselDOM = (media, id, clickedMedia) => {
   carousel.appendChild(closeButton);
 
   const closeIcon = document.createElement('img');
-  closeIcon.setAttribute('src', 'assets/icons/close-black.svg');
+  closeIcon.setAttribute('src', 'assets/icons/close-red.svg');
   closeButton.appendChild(closeIcon);
 
   const rightButton = document.createElement('button');
@@ -58,7 +58,7 @@ export const getCarouselDOM = (media, id, clickedMedia) => {
   carousel.appendChild(rightButton);
 
   const rightArrow = document.createElement('img');
-  rightArrow.setAttribute('src', 'assets/icons/right-arrow.png');
+  rightArrow.setAttribute('src', 'assets/icons/right-arrow-red.svg');
   rightButton.appendChild(rightArrow);
 
   document.querySelector('main').append(carouselContainer);
