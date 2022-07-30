@@ -16,6 +16,14 @@ export const addCarouselInteractions = () => {
     track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
     currentSlide.classList.remove('current_slide');
     targetSlide.classList.add('current_slide');
+    if (track.childNodes[0] === targetSlide) {
+      prevButton.classList.add('hidden');
+    } else if (track.childNodes[track.childElementCount - 1] === targetSlide) {
+      nextButton.classList.add('hidden');
+    } else {
+      prevButton.classList.remove('hidden');
+      nextButton.classList.remove('hidden');
+    }
   };
 
   nextButton.addEventListener('click', () => {
