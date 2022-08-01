@@ -1,4 +1,4 @@
-import { popPhotographerMedia } from '../../pages/photographer.js';
+import { activeFilter } from '../../pages/photographer.js';
 import { mediaFactory } from '../utils.js';
 
 export const getCarouselDOM = (id, clickedMedia) => {
@@ -24,7 +24,7 @@ export const getCarouselDOM = (id, clickedMedia) => {
   const carouselTrack = document.createElement('ul');
   carouselTrack.classList.add('carousel_track');
   carouselTrackContainer.appendChild(carouselTrack);
-  popPhotographerMedia.forEach((element) => {
+  activeFilter.forEach((element) => {
     const carouselSlide = document.createElement('li');
     carouselSlide.classList.add('carousel_slide');
     carouselTrack.appendChild(carouselSlide);

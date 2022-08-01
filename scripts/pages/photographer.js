@@ -26,7 +26,7 @@ const photographerId = params.get('id');
 const photographer = getPhotographerById(photographers, photographerId);
 
 const photographerMedias = getPhotographerMedias(medias, photographerId);
-export const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
+const popPhotographerMedia = [...photographerMedias].sort((a, b) => b.likes - a.likes);
 
 const datePhotographerMedia = [...photographerMedias].sort((a, b) => {
   const dateA = new Date(a.date);
@@ -43,6 +43,8 @@ const titlePhotographerMedia = [...photographerMedias].sort((a, b) => {
     return 1;
   }
 });
+
+export let activeFilter = popPhotographerMedia;
 
 const totalLikes = countLikes(photographerMedias);
 
@@ -62,6 +64,7 @@ const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'],
       const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
 
       currentMedia.style.order = mediaCounter;
+      activeFilter = popPhotographerMedia;
       mediaCounter = mediaCounter + 1;
     });
   }
@@ -73,17 +76,18 @@ const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'],
 
       currentMedia.style.order = mediaCounter;
       mediaCounter = mediaCounter + 1;
+      activeFilter = datePhotographerMedia;
     });
   }
 
   if (selected === 'Titre') {
-    console.log('prout');
     let mediaCounter = 0;
     titlePhotographerMedia.forEach((media) => {
       const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
 
       currentMedia.style.order = mediaCounter;
       mediaCounter = mediaCounter + 1;
+      activeFilter = titlePhotographerMedia;
     });
   }
 });
