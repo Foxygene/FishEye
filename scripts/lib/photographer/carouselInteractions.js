@@ -40,6 +40,8 @@ export const addCarouselInteractions = () => {
     moveToSlide(track, currentSlide, prevSlide);
   });
 
+  //add keyboard inputs interactivity
+
   const setBaseSlide = () => {
     const currentSlide = track.querySelector('.current_slide');
 

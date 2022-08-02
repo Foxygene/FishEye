@@ -13,4 +13,6 @@ export const displayModal = (element) => {
     const { firstName, lastName, email, yourMessage } = event.currentTarget.elements;
     console.log(firstName.value, lastName.value, email.value, yourMessage.value);
   });
+
+  //add focus
 };
