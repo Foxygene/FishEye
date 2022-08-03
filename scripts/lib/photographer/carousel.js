@@ -45,10 +45,6 @@ export const getCarouselDOM = (id, clickedMedia) => {
 
   const closeButton = document.createElement('button');
   closeButton.classList.add('carousel_close_btn');
-  closeButton.addEventListener('click', () => {
-    const carousel = document.querySelector('.carousel_container');
-    carousel.remove();
-  });
   carousel.appendChild(closeButton);
 
   const closeIcon = document.createElement('img');

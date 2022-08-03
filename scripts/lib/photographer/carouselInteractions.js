@@ -3,6 +3,7 @@ export const addCarouselInteractions = () => {
   const slides = Array.from(track.children);
   const nextButton = document.querySelector('.carousel_button_right');
   const prevButton = document.querySelector('.carousel_button_left');
+  const closeButton = document.querySelector('.carousel_close_btn');
 
   const slideWidth = slides[0].getBoundingClientRect().width;
 
@@ -40,7 +41,24 @@ export const addCarouselInteractions = () => {
     moveToSlide(track, currentSlide, prevSlide);
   });
 
-  //add keyboard inputs interactivity
+  closeButton.addEventListener('click', () => {
+    const carousel = document.querySelector('.carousel_container');
+    carousel.remove();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const currentSlide = track.querySelector('.current_slide');
+    const nextSlide = currentSlide.nextElementSibling;
+    const prevSlide = currentSlide.previousElementSibling;
+    const keyPressed = event.key;
+
+    if (keyPressed === 'ArrowRight') moveToSlide(track, currentSlide, nextSlide);
+    if (keyPressed === 'ArrowLeft') moveToSlide(track, currentSlide, prevSlide);
+    if (keyPressed === 'Escape') {
+      const carousel = document.querySelector('.carousel_container');
+      carousel.remove();
+    }
+  });
 
   const setBaseSlide = () => {
     const currentSlide = track.querySelector('.current_slide');
