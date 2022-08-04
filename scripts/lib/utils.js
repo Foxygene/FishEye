@@ -1,16 +1,18 @@
 export const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
 export const getSelectDOM = (options) => {
-  const select = document.createElement('select');
+  const dropdown = document.createElement('div');
+  dropdown.classList.add('dropdown');
 
   options.forEach((option) => {
-    const optionDOM = document.createElement('option');
-    optionDOM.setAttribute('value', option);
+    const optionDOM = document.createElement('a');
+    optionDOM.classList.add('dropdown-option');
+
     optionDOM.textContent = option;
-    select.appendChild(optionDOM);
+    dropdown.appendChild(optionDOM);
   });
 
-  return select;
+  return dropdown;
 };
 
 export const toggleVisibility = (element) => {

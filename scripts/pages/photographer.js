@@ -1,7 +1,7 @@
 import { displayModal } from '../lib/photographer/contactForm.js';
 import {
   countLikes,
-  getFilterSelectorDOM,
+  getFilterDropdownDOM,
   getPhotographerById,
   getPhotographerMedias,
   getUserHeaderDOM,
@@ -57,7 +57,7 @@ const userMediaDOM = getUserMediaDOM(popPhotographerMedia, photographerId, (acti
   userTotalLikesDOM = updatedLikesDOM;
 });
 
-const filterSelectorDOM = getFilterSelectorDOM(['Popularité', 'Date', 'Titre'], (selected) => {
+const filterSelectorDOM = getFilterDropdownDOM(['Popularité', 'Date', 'Titre'], (selected) => {
   if (selected === 'Popularité') {
     let mediaCounter = 0;
     popPhotographerMedia.forEach((media) => {

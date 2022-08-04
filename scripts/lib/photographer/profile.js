@@ -1,4 +1,4 @@
-import { getSelectDOM, mediaFactory, toggleVisibility } from '../utils.js';
+import { getSelectDOM as getDropdownDOM, mediaFactory, toggleVisibility } from '../utils.js';
 import { getCarouselDOM } from './carousel.js';
 import { addCarouselInteractions } from './carouselInteractions.js';
 
@@ -60,7 +60,7 @@ export const getUserHeaderDOM = (photographer) => {
   return headerSection;
 };
 
-export const getFilterSelectorDOM = (options, onSelectChange) => {
+export const getFilterDropdownDOM = (options, onSelectChange) => {
   const filterBox = document.createElement('div');
   filterBox.classList.add('filter-box');
 
@@ -72,7 +72,7 @@ export const getFilterSelectorDOM = (options, onSelectChange) => {
   selectBox.classList.add('custom-select');
   filterBox.appendChild(selectBox);
 
-  const select = getSelectDOM(options);
+  const select = getDropdownDOM(options);
 
   select.addEventListener('change', (event) => {
     onSelectChange(event.currentTarget.value);
