@@ -1,4 +1,4 @@
-import { getSelectDOM as getDropdownDOM, mediaFactory, toggleVisibility } from '../utils.js';
+import { getDrodownSelectorDOM as getDropdownDOM, mediaFactory, toggleVisibility } from '../utils.js';
 import { getCarouselDOM } from './carousel.js';
 import { addCarouselInteractions } from './carouselInteractions.js';
 
@@ -68,22 +68,22 @@ export const getFilterDropdownDOM = (options, onSelectChange) => {
   filterText.textContent = 'Trier par';
   filterBox.appendChild(filterText);
 
-  const selectBox = document.createElement('div');
-  selectBox.classList.add('custom-select');
-  filterBox.appendChild(selectBox);
+  // const selectBox = document.createElement('div');
+  // selectBox.classList.add('custom-select');
+  // filterBox.appendChild(selectBox);
 
-  const select = getDropdownDOM(options);
+  const dropdown = getDropdownDOM(options);
 
-  select.addEventListener('change', (event) => {
-    onSelectChange(event.currentTarget.value);
-  });
+  // select.addEventListener('change', (event) => {
+  //   onSelectChange(event.currentTarget.value);
+  // });
 
-  selectBox.appendChild(select);
+  filterBox.appendChild(dropdown);
 
-  const selectArrow = document.createElement('img');
-  selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
-  selectArrow.classList.add('select-arrow');
-  selectBox.appendChild(selectArrow);
+  // const selectArrow = document.createElement('img');
+  // selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
+  // selectArrow.classList.add('select-arrow');
+  // selectBox.appendChild(selectArrow);
 
   return filterBox;
 };
@@ -141,7 +141,6 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
 
       mediaLikeCount.textContent = media.likes + 1;
       mediaLikeIcon.classList.add('active');
-      mediaLikeCount.classList.add('active');
       activeLike = activeLike + 1;
       onLikeChange(activeLike);
     });

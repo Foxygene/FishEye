@@ -1,16 +1,31 @@
 export const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
-export const getSelectDOM = (options) => {
+export const getDrodownSelectorDOM = (options) => {
   const dropdown = document.createElement('div');
   dropdown.classList.add('dropdown');
 
+  const selectedOption = document.createElement('a');
+  selectedOption.classList.add('selected-option');
+  selectedOption.textContent = options[0];
+  dropdown.appendChild(selectedOption);
+
+  const optionsBox = document.createElement('div');
+  optionsBox.classList.add('options-box');
+  dropdown.appendChild(optionsBox);
+
   options.forEach((option) => {
+    if (option === options[0]) return;
     const optionDOM = document.createElement('a');
     optionDOM.classList.add('dropdown-option');
 
     optionDOM.textContent = option;
-    dropdown.appendChild(optionDOM);
+    optionsBox.appendChild(optionDOM);
   });
+
+  const selectArrow = document.createElement('img');
+  selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
+  selectArrow.classList.add('select-arrow');
+  dropdown.appendChild(selectArrow);
 
   return dropdown;
 };
