@@ -68,22 +68,9 @@ export const getFilterDropdownDOM = (options, onSelectChange) => {
   filterText.textContent = 'Trier par';
   filterBox.appendChild(filterText);
 
-  // const selectBox = document.createElement('div');
-  // selectBox.classList.add('custom-select');
-  // filterBox.appendChild(selectBox);
-
   const dropdown = getDropdownDOM(options);
 
-  // select.addEventListener('change', (event) => {
-  //   onSelectChange(event.currentTarget.value);
-  // });
-
   filterBox.appendChild(dropdown);
-
-  // const selectArrow = document.createElement('img');
-  // selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
-  // selectArrow.classList.add('select-arrow');
-  // selectBox.appendChild(selectArrow);
 
   return filterBox;
 };
