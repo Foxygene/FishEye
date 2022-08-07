@@ -303,7 +303,7 @@ label {
   list-style: none;
   position: relative;
   height: 100%;
-  transition: transform 250ms ease-in;
+  transition: transform 150ms ease-in;
 }
 
 .carousel_slide {
