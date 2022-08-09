@@ -58,7 +58,8 @@ const userMediaDOM = getUserMediaDOM(popPhotographerMedia, photographerId, (acti
 });
 
 const filterSelectorDOM = getFilterDropdownDOM(['Popularité', 'Date', 'Titre'], (selected) => {
-  if (selected === 'Popularité') {
+  const filter = selected.target.text;
+  if (filter === 'Popularité') {
     let mediaCounter = 0;
     popPhotographerMedia.forEach((media) => {
       const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
@@ -69,7 +70,7 @@ const filterSelectorDOM = getFilterDropdownDOM(['Popularité', 'Date', 'Titre'],
     });
   }
 
-  if (selected === 'Date') {
+  if (filter === 'Date') {
     let mediaCounter = 0;
     datePhotographerMedia.forEach((media) => {
       const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
@@ -80,7 +81,7 @@ const filterSelectorDOM = getFilterDropdownDOM(['Popularité', 'Date', 'Titre'],
     });
   }
 
-  if (selected === 'Titre') {
+  if (filter === 'Titre') {
     let mediaCounter = 0;
     titlePhotographerMedia.forEach((media) => {
       const currentMedia = document.querySelector(`[data-id="${media.id}"]`);

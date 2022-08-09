@@ -68,7 +68,7 @@ export const getFilterDropdownDOM = (options, onSelectChange) => {
   filterText.textContent = 'Trier par';
   filterBox.appendChild(filterText);
 
-  const dropdown = getDropdownDOM(options);
+  const dropdown = getDropdownDOM(options, onSelectChange);
 
   filterBox.appendChild(dropdown);
 

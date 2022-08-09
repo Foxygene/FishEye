@@ -1,11 +1,13 @@
 export const getData = async () => fetch('/data/data.json').then((response) => response.json());
 
-export const getDrodownSelectorDOM = (options) => {
+export const getDrodownSelectorDOM = (options, onSelectChange) => {
   const dropdown = document.createElement('div');
   dropdown.classList.add('dropdown');
 
   const selectedOption = document.createElement('a');
   selectedOption.classList.add('selected-option');
+  selectedOption.addEventListener('click', onSelectChange);
+
   selectedOption.textContent = options[0];
   dropdown.appendChild(selectedOption);
 
@@ -16,6 +18,7 @@ export const getDrodownSelectorDOM = (options) => {
   options.forEach((option) => {
     if (option === options[0]) return;
     const optionDOM = document.createElement('a');
+    optionDOM.addEventListener('click', onSelectChange);
     optionDOM.classList.add('dropdown-option');
 
     optionDOM.textContent = option;
