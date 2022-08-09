@@ -15,8 +15,8 @@ export const getDrodownSelectorDOM = (options, onSelectChange) => {
   optionsBox.classList.add('options-box');
   dropdown.appendChild(optionsBox);
 
-  options.forEach((option) => {
-    if (option === options[0]) return;
+  options.forEach((option, i) => {
+    if (i === 0) return;
     const optionDOM = document.createElement('a');
     optionDOM.addEventListener('click', onSelectChange);
     optionDOM.classList.add('dropdown-option');
