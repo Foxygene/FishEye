@@ -1,4 +1,4 @@
-export const getData = async () => fetch('/data/data.json').then((response) => response.json());
+export const getData = async () => fetch('./data/data.json').then((response) => response.json());
 
 export const getDrodownSelectorDOM = (options, onSelectChange) => {
   const dropdown = document.createElement('div');
