@@ -80,21 +80,24 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
   mediaSection.classList.add('media_section');
 
   userMedia.forEach((media) => {
-    const mediaBox = document.createElement('div');
-    mediaBox.dataset.id = media.id;
-    mediaBox.classList.add('media_box');
-    mediaSection.appendChild(mediaBox);
+    const mediaCard = document.createElement('div');
+    mediaCard.dataset.id = media.id;
+    mediaCard.classList.add('media_box');
+    mediaSection.appendChild(mediaCard);
+
+    const mediaBox = document.createElement('button');
+    mediaCard.appendChild(mediaBox);
 
     const mediaElement = mediaFactory(id, media);
     mediaBox.appendChild(mediaElement);
-    mediaBox.firstChild.addEventListener('click', () => {
+    mediaBox.addEventListener('click', () => {
       getCarouselDOM(id, mediaElement);
       addCarouselInteractions();
     });
 
     const mediaInfos = document.createElement('div');
     mediaInfos.classList.add('media_infos');
-    mediaBox.appendChild(mediaInfos);
+    mediaCard.appendChild(mediaInfos);
 
     const mediaName = document.createElement('p');
     mediaName.classList.add('media_name');
