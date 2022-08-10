@@ -6,7 +6,6 @@ export const getDrodownSelectorDOM = (options, onSelectChange) => {
 
   const selectedOption = document.createElement('a');
   selectedOption.classList.add('selected-option');
-  selectedOption.addEventListener('click', onSelectChange);
 
   selectedOption.textContent = options[0];
   dropdown.appendChild(selectedOption);
