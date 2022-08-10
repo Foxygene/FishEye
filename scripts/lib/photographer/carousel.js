@@ -14,7 +14,7 @@ export const getCarouselDOM = (id, clickedMedia) => {
   carousel.appendChild(leftButton);
 
   const leftArrow = document.createElement('img');
-  leftArrow.setAttribute('src', 'assets/icons/right-arrow-red.svg');
+  leftArrow.setAttribute('src', './assets/icons/right-arrow-red.svg');
   leftButton.appendChild(leftArrow);
 
   const carouselTrackContainer = document.createElement('div');
@@ -48,7 +48,7 @@ export const getCarouselDOM = (id, clickedMedia) => {
   carousel.appendChild(closeButton);
 
   const closeIcon = document.createElement('img');
-  closeIcon.setAttribute('src', 'assets/icons/close-red.svg');
+  closeIcon.setAttribute('src', './assets/icons/close-red.svg');
   closeButton.appendChild(closeIcon);
 
   const rightButton = document.createElement('button');
@@ -56,7 +56,7 @@ export const getCarouselDOM = (id, clickedMedia) => {
   carousel.appendChild(rightButton);
 
   const rightArrow = document.createElement('img');
-  rightArrow.setAttribute('src', 'assets/icons/right-arrow-red.svg');
+  rightArrow.setAttribute('src', './assets/icons/right-arrow-red.svg');
   rightButton.appendChild(rightArrow);
 
   document.querySelector('main').append(carouselContainer);

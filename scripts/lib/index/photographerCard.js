@@ -1,13 +1,13 @@
 export function getUserCardDOM(photographer) {
   const { name, id, city, country, tagline, price, portrait } = photographer;
-  const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
+  const picture = `./assets/photographers/Photographers ID Photos/${portrait}`;
   const article = document.createElement('article');
 
   const seachParams = new URLSearchParams({ id });
 
   const articleLink = document.createElement('a');
   articleLink.classList.add('article-content');
-  articleLink.setAttribute('href', `/photographer.html?${seachParams}`);
+  articleLink.setAttribute('href', `./photographer.html?${seachParams}`);
 
   const profilePictureElement = document.createElement('img');
   profilePictureElement.setAttribute('src', picture);

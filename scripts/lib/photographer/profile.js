@@ -20,7 +20,7 @@ export const countLikes = (userMedia) => {
 let activeLike = 0;
 export const getUserHeaderDOM = (photographer) => {
   const { name, id, city, country, tagline, price, portrait } = photographer;
-  const picture = `assets/photographers/Photographers ID Photos/${portrait}`;
+  const picture = `./assets/photographers/Photographers ID Photos/${portrait}`;
 
   const headerSection = document.createElement('div');
   headerSection.classList.add('photograph-header');

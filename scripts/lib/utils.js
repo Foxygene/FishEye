@@ -25,7 +25,7 @@ export const getDrodownSelectorDOM = (options, onSelectChange) => {
   });
 
   const selectArrow = document.createElement('img');
-  selectArrow.setAttribute('src', 'assets/icons/arrow.svg');
+  selectArrow.setAttribute('src', './assets/icons/arrow.svg');
   selectArrow.classList.add('select-arrow');
   dropdown.appendChild(selectArrow);
 
@@ -39,13 +39,13 @@ export const toggleVisibility = (element) => {
 export const mediaFactory = (id, media) => {
   if (media.image) {
     const img = document.createElement('img');
-    img.setAttribute('src', `assets/photographers/${id}/${media.image}`);
+    img.setAttribute('src', `./assets/photographers/${id}/${media.image}`);
     return img;
   }
 
   if (media.video) {
     const vid = document.createElement('video');
-    vid.setAttribute('src', `assets/photographers/${id}/${media.video}`);
+    vid.setAttribute('src', `./assets/photographers/${id}/${media.video}`);
     return vid;
   }
   throw new Error('media invalid');
