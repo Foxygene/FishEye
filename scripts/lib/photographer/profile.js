@@ -48,7 +48,9 @@ export const getUserHeaderDOM = (photographer) => {
   contactButton.classList.add('contact_button');
   contactButton.addEventListener('click', () => {
     const contactModal = document.querySelector('#contact_modal');
+    const firstInput = contactModal.querySelector('input');
     toggleVisibility(contactModal);
+    firstInput.focus();
   });
   contactButton.textContent = 'Contactez-moi';
   headerSection.appendChild(contactButton);
