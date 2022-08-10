@@ -200,6 +200,12 @@ label {
   flex-direction: column;
 }
 
+.media_box button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 .media_box img,
 .media_box video {
   object-fit: cover;
