@@ -1,3 +1,5 @@
+import { toggleVisibility } from '../utils.js';
+
 export const initModal = (element) => {
   const modal = document.querySelector('.modal');
 
@@ -12,6 +14,13 @@ export const initModal = (element) => {
     event.preventDefault();
     const { firstName, lastName, email, yourMessage } = event.currentTarget.elements;
     console.log(firstName.value, lastName.value, email.value, yourMessage.value);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const contactModal = document.querySelector('#contact_modal');
+    if (!contactModal.classList.contains('hidden')) {
+      if (event.key === 'Escape') toggleVisibility(contactModal);
+    }
   });
 
   //add focus
