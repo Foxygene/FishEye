@@ -14,6 +14,7 @@ export const addCarouselInteractions = () => {
   slides.forEach(setSlidePosition);
 
   const moveToSlide = (track, currentSlide, targetSlide) => {
+    if (targetSlide === null) return;
     track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
     currentSlide.classList.remove('current_slide');
     targetSlide.classList.add('current_slide');
