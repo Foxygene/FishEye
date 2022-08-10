@@ -1,4 +1,4 @@
-export const displayModal = (element) => {
+export const initModal = (element) => {
   const modal = document.querySelector('.modal');
 
   const form = document.querySelector('.contact_form');

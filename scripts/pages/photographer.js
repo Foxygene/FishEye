@@ -1,4 +1,4 @@
-import { displayModal } from '../lib/photographer/contactForm.js';
+import { initModal } from '../lib/photographer/contactForm.js';
 import {
   countLikes,
   getFilterDropdownDOM,
@@ -98,4 +98,4 @@ const filterSelectorDOM = getFilterDropdownDOM(['Popularité', 'Date', 'Titre'],
 });
 
 profileSection.append(userHeaderDOM, filterSelectorDOM, userMediaDOM, userTotalLikesDOM);
-displayModal(photographer);
+initModal(photographer);
