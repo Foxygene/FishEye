@@ -57,6 +57,7 @@ export const addCarouselInteractions = () => {
     if (keyPressed === 'ArrowLeft') moveToSlide(track, currentSlide, prevSlide);
     if (keyPressed === 'Escape') {
       const carousel = document.querySelector('.carousel_container');
+      if (carousel === null) return;
       carousel.remove();
     }
   });
