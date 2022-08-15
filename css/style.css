@@ -13,6 +13,10 @@ header {
   height: 90px;
 }
 
+header img {
+  cursor: pointer;
+}
+
 h1 {
   color: #901c1c;
   margin-right: 100px;

@@ -2,6 +2,10 @@
   display: none;
 }
 
+.home_button {
+  margin-top: 5px;
+}
+
 .photograph-header {
   background-color: #fafafa;
   margin: 0 100px;
