@@ -77,7 +77,7 @@ export const getFilterDropdownDOM = (options, onSelectChange) => {
   return filterBox;
 };
 
-export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
+export const getUserMediaDOM = (userMedia, id, activeFilter, onLikeChange) => {
   const mediaSection = document.createElement('div');
   mediaSection.classList.add('media_section');
 
@@ -93,7 +93,7 @@ export const getUserMediaDOM = (userMedia, id, onLikeChange) => {
     const mediaElement = mediaFactory(id, media);
     mediaBox.appendChild(mediaElement);
     mediaBox.addEventListener('click', () => {
-      getCarouselDOM(id, mediaElement);
+      getCarouselDOM(id, activeFilter, mediaElement);
       addCarouselInteractions();
     });
 

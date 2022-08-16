@@ -1,7 +1,6 @@
-import { activeFilter } from '../../pages/photographer.js';
 import { mediaFactory } from '../utils.js';
 
-export const getCarouselDOM = (id, clickedMedia) => {
+export const getCarouselDOM = (id, activeFilter, clickedMedia) => {
   const carouselContainer = document.createElement('div');
   carouselContainer.classList.add('carousel_container');
 
