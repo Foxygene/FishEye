@@ -1,4 +1,4 @@
-import { getDrodownSelectorDOM as getDropdownDOM, mediaFactory, toggleVisibility } from '../utils.js';
+import { getDrodownSelectorDOM, mediaFactory, toggleVisibility } from '../utils.js';
 import { getCarouselDOM } from './carousel.js';
 import { addCarouselInteractions } from './carouselInteractions.js';
 
@@ -70,7 +70,7 @@ export const getFilterDropdownDOM = (options, onSelectChange) => {
   filterText.textContent = 'Trier par';
   filterBox.appendChild(filterText);
 
-  const dropdown = getDropdownDOM(options, onSelectChange);
+  const dropdown = getDrodownSelectorDOM(options, onSelectChange);
 
   filterBox.appendChild(dropdown);
 
