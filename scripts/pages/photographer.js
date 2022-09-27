@@ -64,7 +64,7 @@ async function start() {
     const temp = currentFilter.textContent;
     currentFilter.textContent = newFilter.text;
     newFilter.textContent = temp;
-    if (newFilter.text === 'Popularité') {
+    if (currentFilter.text === 'Popularité') {
       let mediaCounter = 0;
       popPhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
@@ -75,7 +75,7 @@ async function start() {
       });
     }
 
-    if (newFilter.text === 'Date') {
+    if (currentFilter.text === 'Date') {
       let mediaCounter = 0;
       datePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
@@ -86,7 +86,7 @@ async function start() {
       });
     }
 
-    if (newFilter.text === 'Titre') {
+    if (currentFilter.text === 'Titre') {
       let mediaCounter = 0;
       titlePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
