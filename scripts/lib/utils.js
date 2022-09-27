@@ -40,12 +40,14 @@ export const mediaFactory = (id, media) => {
   if (media.image) {
     const img = document.createElement('img');
     img.setAttribute('src', `./assets/photographers/${id}/${media.image}`);
+    img.setAttribute('alt', media.title);
     return img;
   }
 
   if (media.video) {
     const vid = document.createElement('video');
     vid.setAttribute('src', `./assets/photographers/${id}/${media.video}`);
+    vid.setAttribute('alt', media.title);
     return vid;
   }
   throw new Error('media invalid');
