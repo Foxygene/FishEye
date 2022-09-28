@@ -1,0 +1,22 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "Photographer social website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Foxygene/FishEye.git"
+  },
+  "author": "Foxygene",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Foxygene/FishEye/issues"
+  },
+  "homepage": "https://github.com/Foxygene/FishEye#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0"
+  }
+}
