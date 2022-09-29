@@ -64,36 +64,25 @@ async function start() {
     const temp = currentFilter.textContent;
     currentFilter.textContent = newFilter.text;
     newFilter.textContent = temp;
+    const mediaSection = document.querySelector('.media_section');
     if (currentFilter.text === 'Popularité') {
-      let mediaCounter = 0;
       popPhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        activeFilter = popPhotographerMedia;
-        mediaCounter = mediaCounter + 1;
+        mediaSection.append(currentMedia);
       });
     }
 
     if (currentFilter.text === 'Date') {
-      let mediaCounter = 0;
       datePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        mediaCounter = mediaCounter + 1;
-        activeFilter = datePhotographerMedia;
+        mediaSection.append(currentMedia);
       });
     }
 
     if (currentFilter.text === 'Titre') {
-      let mediaCounter = 0;
       titlePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
-
-        currentMedia.style.order = mediaCounter;
-        mediaCounter = mediaCounter + 1;
-        activeFilter = titlePhotographerMedia;
+        mediaSection.append(currentMedia);
       });
     }
   });
