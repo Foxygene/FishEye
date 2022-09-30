@@ -76,7 +76,6 @@ async function start() {
               const nodes = document.querySelectorAll('.media_box');
               const firstMedia = nodes[0];
               firstMedia.firstChild.focus({focusVisible: true});
-              console.log(firstMedia.firstChild);
             }
           })
         }
@@ -94,7 +93,6 @@ async function start() {
               const nodes = document.querySelectorAll('.media_box');
               const firstMedia = nodes[0];
               firstMedia.firstChild.focus({focusVisible: true});
-              console.log(firstMedia.firstChild);
             }
           })
         }
@@ -108,11 +106,11 @@ async function start() {
         if (media === titlePhotographerMedia[titlePhotographerMedia.length - 1]) {
           currentMedia.addEventListener('keydown', (event) => {
             const keyPressed = event.key
+            console.log(keyPressed);
             if (keyPressed === 'Tab') {
               const nodes = document.querySelectorAll('.media_box');
               const firstMedia = nodes[0];
               firstMedia.firstChild.focus({focusVisible: true});
-              console.log(firstMedia.firstChild);
             }
           })
         }
