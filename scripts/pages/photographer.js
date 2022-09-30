@@ -69,6 +69,17 @@ async function start() {
       popPhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
         mediaSection.append(currentMedia);
+        if (media === popPhotographerMedia[popPhotographerMedia.length - 1]) {
+          currentMedia.addEventListener('keydown', (event) => {
+            const keyPressed = event.key
+            if (keyPressed === 'Tab') {
+              const nodes = document.querySelectorAll('.media_box');
+              const firstMedia = nodes[0];
+              firstMedia.firstChild.focus({focusVisible: true});
+              console.log(firstMedia.firstChild);
+            }
+          })
+        }
       });
     }
 
@@ -76,6 +87,17 @@ async function start() {
       datePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
         mediaSection.append(currentMedia);
+        if (media === datePhotographerMedia[datePhotographerMedia.length - 1]) {
+          currentMedia.addEventListener('keydown', (event) => {
+            const keyPressed = event.key
+            if (keyPressed === 'Tab') {
+              const nodes = document.querySelectorAll('.media_box');
+              const firstMedia = nodes[0];
+              firstMedia.firstChild.focus({focusVisible: true});
+              console.log(firstMedia.firstChild);
+            }
+          })
+        }
       });
     }
 
@@ -83,6 +105,17 @@ async function start() {
       titlePhotographerMedia.forEach((media) => {
         const currentMedia = document.querySelector(`[data-id="${media.id}"]`);
         mediaSection.append(currentMedia);
+        if (media === titlePhotographerMedia[titlePhotographerMedia.length - 1]) {
+          currentMedia.addEventListener('keydown', (event) => {
+            const keyPressed = event.key
+            if (keyPressed === 'Tab') {
+              const nodes = document.querySelectorAll('.media_box');
+              const firstMedia = nodes[0];
+              firstMedia.firstChild.focus({focusVisible: true});
+              console.log(firstMedia.firstChild);
+            }
+          })
+        }
       });
     }
   });
