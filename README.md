@@ -1,6 +1,6 @@
 # FishEye
 
-[![Logo FishEye](logo.png)](https://foxygene.github.io/FishEye/assets/images/)
+[![Logo FishEye](https://foxygene.github.io/FishEye/assets/images/logo.png)](https://foxygene.github.io/FishEye/)
 
 ## What is "FishEye"
 
