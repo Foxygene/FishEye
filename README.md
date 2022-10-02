@@ -4,7 +4,7 @@
 
 ## What is "FishEye"
 
-FishEye is my fourth web project and my first time playing with json database.
+FishEye is my fourth web project, my first time playing with json database and first approach to accessibility.
 
 It's a fictionnal photographer website/social-media.
 
