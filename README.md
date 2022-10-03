@@ -1,10 +1,10 @@
 # FishEye
 
-[![Logo FishEye](logo.png)](https://foxygene.github.io/FishEye/assets/images/)
+[![Logo FishEye](https://foxygene.github.io/FishEye/assets/images/logo.png)](https://foxygene.github.io/FishEye/)
 
 ## What is "FishEye"
 
-FishEye is my fourth web project and my first time playing with json database.
+FishEye is my fourth web project, my first time playing with json database and first approach to accessibility.
 
 It's a fictionnal photographer website/social-media.
 
