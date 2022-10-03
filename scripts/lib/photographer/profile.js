@@ -106,7 +106,7 @@ export const getUserMediaDOM = (userMedia, id, activeFilter, onLikeChange) => {
     mediaName.textContent = media.title;
     mediaInfos.appendChild(mediaName);
 
-    const mediaLikeBox = document.createElement('div');
+    const mediaLikeBox = document.createElement('button');
     mediaLikeBox.classList.add('media_like_box');
     mediaInfos.appendChild(mediaLikeBox);
 
@@ -120,7 +120,7 @@ export const getUserMediaDOM = (userMedia, id, activeFilter, onLikeChange) => {
     mediaLikeIcon.innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.4 10.6 20C5.4 15.4 2 12.3 2 8.5 2 5.5 4.4 3 7.5 3A6 6 0 0 1 12 5a6 6 0 0 1 4.5-2c3 0 5.5 2.4 5.5 5.5 0 3.8-3.4 6.9-8.6 11.5L12 21.4Z"/></svg>';
 
-    mediaLikeIcon.addEventListener('click', () => {
+    mediaLikeBox.addEventListener('click', () => {
       if (mediaLikeIcon.classList.contains('active')) {
         mediaLikeCount.textContent = media.likes;
         mediaLikeIcon.classList.remove('active');
