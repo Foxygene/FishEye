@@ -7,6 +7,7 @@ export function getUserCardDOM(photographer) {
 
   const articleLink = document.createElement('a');
   articleLink.classList.add('article-content');
+  articleLink.setAttribute('aria-label', `${name} profile`);
   articleLink.setAttribute('href', `./photographer.html?${seachParams}`);
 
   const profilePictureElement = document.createElement('img');

@@ -14,6 +14,7 @@ export const getCarouselDOM = (id, activeFilter, clickedMedia) => {
 
   const leftArrow = document.createElement('img');
   leftArrow.setAttribute('src', './assets/icons/right-arrow-red.svg');
+  leftArrow.setAttribute('aria-label', 'Previous');
   leftButton.appendChild(leftArrow);
 
   const carouselTrackContainer = document.createElement('div');
@@ -48,6 +49,7 @@ export const getCarouselDOM = (id, activeFilter, clickedMedia) => {
 
   const closeIcon = document.createElement('img');
   closeIcon.setAttribute('src', './assets/icons/close-red.svg');
+  closeIcon.setAttribute('aria-label', 'Close');
   closeButton.appendChild(closeIcon);
 
   const rightButton = document.createElement('button');
@@ -56,6 +58,7 @@ export const getCarouselDOM = (id, activeFilter, clickedMedia) => {
 
   const rightArrow = document.createElement('img');
   rightArrow.setAttribute('src', './assets/icons/right-arrow-red.svg');
+  rightArrow.setAttribute('aria-label', 'Next');
   rightButton.appendChild(rightArrow);
 
   document.querySelector('main').append(carouselContainer);
